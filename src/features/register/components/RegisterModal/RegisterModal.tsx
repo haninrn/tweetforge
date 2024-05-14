@@ -1,13 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Modal } from '../../../../components/Modal/Modal'
+
+
 import './RegisterModal.css'
+import { RegistrationStepCounter } from '../RegisterStepCounter/RegistrationStepCounter'
+
+
 
 export const RegisterModal:React.FC = () => {
+
   return (
-    <div className='register-modal'>
         <Modal>
-            <h1>Register Modal</h1>
+            <div className='register-container'>
+              <RegistrationStepCounter step={4}/>
+            </div>
         </Modal>
-    </div>
   )
 }
