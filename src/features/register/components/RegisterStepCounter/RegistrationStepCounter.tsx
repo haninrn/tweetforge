@@ -14,7 +14,7 @@ export const RegistrationStepCounter:React.FC<RegisterStepProps> = ({step, chang
         <div className={iconClass(step)} onClick={changeStep}>
             {displayIcon(step)}
         </div>
-            <span className='reg-step-number'>Step {step} of 4</span>
+            <span className='reg-step-number'>Step {step} of 6</span>
         </div>
   )
 }
