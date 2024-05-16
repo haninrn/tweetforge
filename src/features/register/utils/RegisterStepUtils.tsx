@@ -1,4 +1,4 @@
-import { ArrowBackRounded, ClearRounded } from "@mui/icons-material"
+import { ClearRounded, ArrowBackRounded } from "@mui/icons-material"
 
 
 export const displayIcon=(step: number):JSX.Element => {
@@ -21,9 +21,9 @@ export const displayIcon=(step: number):JSX.Element => {
     }
 }
 
-// export const iconClass = (step: number) => {
-//     if(step === 4 || step ===6){
-//         return "reg-step-counter-btn-disabled"
-//     }
-//     return "reg-step-counter-btn"
-// }
+ export const iconClass = (step: number):string => {
+     if(step === 4 || step ===6){
+         return "reg-step-counter-btn-disabled";
+     }
+     return "reg-step-counter-btn"
+ }
