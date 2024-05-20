@@ -21,3 +21,18 @@
     outline: none;
     border: none;
 }
+
+.validated-date-selector {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+}
+
+.validated-input-remainder {
+    position: absolute;
+    top: 5px;
+    right: 2px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #657786;
+}
