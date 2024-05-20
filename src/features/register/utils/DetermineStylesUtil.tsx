@@ -92,3 +92,15 @@ export const determineValidatedSelectStyle = (active:boolean, valid:boolean): st
     return 'gray';
 
 }
+
+export const determineValidatedTextLabel = (active:boolean, valid:boolean):string => {
+    if(!valid && active) {
+        return 'error';
+    }
+
+    if (valid && active) {
+        return 'blue';
+    }
+
+    return 'gray';
+}
