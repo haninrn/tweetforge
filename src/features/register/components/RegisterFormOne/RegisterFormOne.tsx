@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch, RootState } from '../../../../redux/Store';
-import { incrementStep } from '../../../../redux/Slices/RegisterSlice';
+import { incrementStep, updateRegister } from '../../../../redux/Slices/RegisterSlice';
 
 import './RegisterFormOne.css'
 import { RegisterDateInput } from '../RegisterDateInput/RegisterDateInput';
@@ -25,6 +25,10 @@ export const RegisterFormOne:React.FC = () => {
     const [buttonActive, setButtonActive] = useState<boolean>(false);
 
     const nextPage = () => {
+        dispatch(updateRegister({
+            name: "error",
+            value: false
+        }));
         dispatch(incrementStep());
     }
 
