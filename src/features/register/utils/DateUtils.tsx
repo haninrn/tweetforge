@@ -56,3 +56,21 @@ export const getYears = ():JSX.Element[] => {
 export const stringifyDate = (date:Dob):string => {
     return `${MONTHS[date.month].substring(0,3)} ${date.day}, ${date.year}`;
 }
+
+export const cleanDateForRequest = (date:Dob):string => {
+    let month:string = "";
+    let day:string = "";
+    if(date.month < 10){
+        month = `0${date.month}`;
+    } else{
+        month = `${date.month}`;
+    }
+
+    if(date.day < 10){
+        day = `0${date.day}`;
+    } else {
+        day = `${date.day}`;
+    }
+
+    return `${date.year}-${month}-${day}`;
+}
