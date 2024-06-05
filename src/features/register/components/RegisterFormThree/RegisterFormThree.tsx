@@ -6,6 +6,8 @@ import { RootState, AppDispatch } from '../../../../redux/Store';
 import { stringifyDate } from '../../utils/DateUtils';
 import { StyledNextButton } from '../RegisterNextButton/RegisterNextButton';
 import './RegisterFormThree.css';
+import { cleanDateForRequest } from '../../utils/DateUtils';
+
 
 export const RegisterFormThree:React.FC = () => {
 
@@ -13,12 +15,19 @@ export const RegisterFormThree:React.FC = () => {
     const dispatch:AppDispatch = useDispatch();
 
     const submitUser = () =>{
+
+
+
         const user = {
             firstName: state.firstName,
             lastName: state.lastName,
             email: state.email,
-            dob: `${state.dob.year}-${state.dob.month}-${state.dob.day}`
+            dob: cleanDateForRequest(state.dob)
         }   
+
+        console.log("we are attempting to register the user");
+
+        dispatch(registerUser(user));
     }
 
     return(
