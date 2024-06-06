@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { StyledCheckbox, StyledCheckboxBackground } from './StyledCheckbox';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
+import './CheckBox.css'
 
 export const Checkbox:React.FC = () => {
     const [clicked, setClicked] = useState<boolean>(false);
@@ -10,6 +11,7 @@ export const Checkbox:React.FC = () => {
     }
 
     return(
+        <div className="checkbox-container">
         <StyledCheckboxBackground active={clicked} onClick={toggleCheckbox}>
             <StyledCheckbox active={clicked}>
                 {clicked ?
@@ -21,5 +23,6 @@ export const Checkbox:React.FC = () => {
                 }
             </StyledCheckbox>
         </StyledCheckboxBackground>
+        </div>
     )
 }
