@@ -9,13 +9,21 @@ import { RegistrationStepCounter } from '../RegisterStepCounter/RegistrationStep
 import { RegisterNextButton } from '../RegisterNextButton/RegisterNextButton';
 import { determineModalContent } from '../../utils/RegisterModalUtils';
 
+interface RegisterModalProps {
+  toggleModal: ()=> void;
+}
 
-export const RegisterModal:React.FC = () => {
+
+export const RegisterModal:React.FC<RegisterModalProps> = ({toggleModal}) => {
 
   const state = useSelector((state:RootState) => state.register);
   const dispatch:AppDispatch = useDispatch();
 
   const stepButtonClicked = () => {
+    if(state.step ===1){
+      toggleModal()
+      return;
+    }
     dispatch(decrementStep());
   }
 
@@ -30,6 +38,7 @@ export const RegisterModal:React.FC = () => {
         <Modal topContent={<RegistrationStepCounter step={state.step} changeStep={stepButtonClicked} />}
         content={determineModalContent(state.step)}
         bottomContent={<RegisterNextButton step={state.step} />}
-        
+    />    
   )
 }
+
