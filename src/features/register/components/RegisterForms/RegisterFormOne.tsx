@@ -3,7 +3,6 @@ import React from 'react'
 import { useSelector} from 'react-redux';
 import {  RootState } from '../../../../redux/Store';
 
-import './RegisterFormOne.css'
 import { RegisterDateInput } from '../RegisterDateInput/RegisterDateInput';
 import { RegisterNameInputs } from '../RegisterNameInput/RegisterNameInputs';
 import { RegisterEmailInput } from '../RegisterEmailInput/RegisterEmailInput';

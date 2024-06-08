@@ -59,3 +59,22 @@ export interface User {
     profilePicture: string;
     bannerPicture: string;
 }
+
+interface RGBA {
+    r: number;
+    g: number;
+    b: number;
+    a: number;
+}
+
+export interface ModalButtonProps {
+    active: boolean;
+    height: number;
+    fontColor: string;
+    borderColor?: string;
+    backgroundColor: string;
+    fontSize: number;
+    fontWeight: number;
+    hoverBackground: RGBA;
+    hoverBorder?: RGBA;
+}
