@@ -19,7 +19,7 @@ export const RightSideBar:React.FC<RightSideBarProps> = ({toggleRegister, toggle
     <div className="right-side-bar">
         <img src={logoBlue} className="right-side-bar-logo" />
         <h1 className="right-side-bar-h1"> Happening now</h1>
-        <h2 className="right-side-bar-h2">Join Fwitter Today.</h2>
+        <h2 className="right-side-bar-h2">Join TweetForge Today.</h2>
             <div className="right-side-bar-signup-wrapper" >
             <GoogleButton />
             <AppleButton />

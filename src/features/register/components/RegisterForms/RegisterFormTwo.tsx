@@ -1,5 +1,4 @@
 import React from 'react';
-import './RegisterFormTwo.css';
 import { Checkbox } from '../../../../components/Checkbox/Checkbox';
 import'./RegisterForm.css';
 import '../../../../assets/global.css';

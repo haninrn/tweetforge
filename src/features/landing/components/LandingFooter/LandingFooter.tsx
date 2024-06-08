@@ -25,7 +25,7 @@ export const LandingFooter:React.FC = () => {
         <p className="footer-link color-gray">Developers</p>
         <p className="footer-link color-gray">Directory</p>
         <p className="footer-link color-gray">Settings</p>
-        <p className="footer-copyright color-gray">&#169; 2024 Fwitter</p>
+        <p className="footer-copyright color-gray">&#169; 2024 TweetForge</p>
         </div>
         
     )
