@@ -9,10 +9,16 @@ import { getUserByToken } from '../redux/Slices/UserSlice';
 import './Home.css';
 import { Navigation } from '../features/register/components/Navigation/Navigation';
 import { Feed } from '../features/feed/components/Feed/Feed';
+import { FeedPostCreatorEditImageModal } from '../features/feed/components/FeedPostCreatorEditImageModal/FeedPostCreatorEditImageModal';
+import { FeedPostCreatorTagPeopleModal } from '../features/feed/components/FeedPostCreatorTagPeopleModal/FeedPostCreatorTagPeopleModal';
+import { FeedPostCreatorGifModal } from '../features/feed/components/FeedPostCreatorGifModal/FeedPostCreatorGifModal';
 
 export const Home:React.FC = () => {
 
     const state = useSelector((state:RootState) => state.user);
+    const displayEditImageModal = useSelector((state:RootState) => state.modal.displayEditPostImage);
+    const displayTagPeopleModal = useSelector((state:RootState) => state.modal.displayTagPeople);
+    const displayGifModal = useSelector((state:RootState) => state.modal.displayGif);
     const dispatch:AppDispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -38,6 +44,9 @@ export const Home:React.FC = () => {
 
     return (
         <div className="home">
+            {displayEditImageModal && <FeedPostCreatorEditImageModal />}
+            {displayTagPeopleModal && <FeedPostCreatorTagPeopleModal />}
+            {displayGifModal && <FeedPostCreatorGifModal />}
             <div className="home-layout">
                 <div className="home-navigation-section">
                     <Navigation />

@@ -7,7 +7,7 @@ import Check from '@mui/icons-material/Check';
 import CircleSVG from '../../../../components/SVGs/CircleSVG';
 import { updateCurrentPost } from '../../../../redux/Slices/PostSlice';
 
-import './FeedPostCreatorAudienceDropDown.css';
+import './FeedPostAudienceDropDown.css';
 
 export const FeedPostAudienceDropDown:React.FC = () => {
 
