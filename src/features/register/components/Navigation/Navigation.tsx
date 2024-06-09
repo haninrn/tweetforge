@@ -4,7 +4,7 @@ import { RootState } from '../../../../redux/Store';
 import { Link } from 'react-router-dom'
 
 import './Navigation.css';
-import blueLogo from '../../assets/fwitter-logo-large-blue.png';
+import blueLogo from '../../../../assets/fwitter-logo-large-blue.png';
 import HomeSVG from '../../../../components/SVGs/HomeSVG';
 import ExploreSVG from '../../../../components/SVGs/ExploreSVG';
 import NotificationSVG from '../../../../components/SVGs/NotificationSVG';

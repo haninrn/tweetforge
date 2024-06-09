@@ -1,13 +1,14 @@
 import { PayloadAction, createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import { Post, User } from "../../features/register/utils/GlobalInterfaces";
 import axios from "axios";
+import FormData from "form-data";
 
 export interface PostSliceState {
     loading: boolean;
     error: boolean;
     currentPost: Post | undefined;
-    posts: Post[]
-
+    posts: Post[],
+    currentPostImages: File[]
 }
 
 interface updatePostPayload{
@@ -27,11 +28,16 @@ interface CreatePostBody {
     
 }
 
+interface CreatePostWithMediaBody extends CreatePostBody {
+    images: File[]
+}
+
 const initialState:PostSliceState = {
     loading: false,
     error: false,
     currentPost: undefined,
-    posts:[]
+    posts:[],
+    currentPostImages: []
 
 }
 
@@ -63,6 +69,51 @@ export const createPost = createAsyncThunk(
     }
 )
 
+export const createPostWithMedia = createAsyncThunk(
+    'post/create-media',
+    async (body:CreatePostWithMediaBody, thunkAPI) => {
+        try{
+
+            const images = body.images;
+
+            let data = new FormData();
+
+            let post = {
+                content: body.content,
+                author: body.author,
+                replies: body.replies,
+                scheduled: body.scheduled,
+                scheduledDate: body.scheduledDate,
+                audience: body.audience,
+                replyRestriction: body.replyRestriction
+            }
+
+            data.append('post', JSON.stringify(post));
+
+            images.forEach((image) => {
+                data.append('media', image);
+            })
+
+            let config = {
+                method:'post',
+                url: 'http://localhost:8000/posts/media',
+                headers: {
+                    'Authorization': `Bearer ${body}`,
+                    'Content-Type': 'multipart/form-data'
+                },
+                data
+            }
+
+            let res = await axios(config);
+
+            return res.data;
+
+        } catch(e){
+            thunkAPI.rejectWithValue(e);
+        }
+    }
+)
+
 export const PostSlice = createSlice({
     name: "post",
     initialState,
@@ -86,6 +137,14 @@ export const PostSlice = createSlice({
                     }
                 }
                 return state;
+            },
+            
+            updateCurrentPostImages(state, action:PayloadAction<File[]>){
+                state = {
+                    ...state,
+                    currentPostImages: action.payload
+                }
+                return state;
             }
         },
         extraReducers: (builder) => {
@@ -96,6 +155,16 @@ export const PostSlice = createSlice({
                 }
                 return state;
             });
+
+            builder.addCase(createPostWithMedia.pending, (state, action) => {
+                state = {
+                    ...state,
+                    loading:true
+                };
+
+                return state;
+            })
+
             builder.addCase(createPost.fulfilled, (state, action) => {
                 let post:Post = action.payload;
 
@@ -110,6 +179,21 @@ export const PostSlice = createSlice({
                 return state;
             });
 
+            builder.addCase(createPostWithMedia.fulfilled, (state,action) => {
+                let post:Post = action.payload;
+
+                state = {
+                    ...state,
+                    posts: [post, ...state.posts],
+                    loading:false,
+                    error: false,
+                    currentPost:undefined,
+                    currentPostImages: []
+                };
+
+                return state;
+            })
+
             builder.addCase(createPost.rejected, (state, action) => {
                 state = {
                     ...state,
@@ -117,10 +201,19 @@ export const PostSlice = createSlice({
                 }
                 return state;
             })
+
+            builder.addCase(createPostWithMedia.rejected, (state, action) => {
+                state = {
+                    ...state,
+                    error:true
+                }
+
+                return state;
+            });
         }
     }
 )
 
-export const {initializeCurrentPost, updateCurrentPost} = PostSlice.actions;
+export const {initializeCurrentPost, updateCurrentPost, updateCurrentPostImages} = PostSlice.actions;
 
 export default PostSlice.reducer;
