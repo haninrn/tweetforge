@@ -30,14 +30,14 @@
     cursor: pointer;
 }
 
-.login-modal-top-middle {
+.login-modal-top-middle{
     width: 33%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.login-modal-top-right {
+.login-modal-top-right{
     width: 33%;
 }
 

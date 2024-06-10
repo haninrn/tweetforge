@@ -1,4 +1,4 @@
-.validated-input {
+.validated-input{
     height: fit-content;
     width: 100%;
 }
@@ -22,7 +22,7 @@
     border: none;
 }
 
-.validated-date-selector {
+.validated-date-selector{
     -webkit-appearance: none;
     -moz-appearance: none;
     width: 100%;
@@ -31,13 +31,13 @@
 .validated-input-remainder {
     position: absolute;
     top: 5px;
-    right: 2px;
+    right: 10px;
     font-size: 13px;
     font-weight: 500;
     color: #657786;
 }
 
-.dropdown-container {
+.dropdown-container{
     margin-bottom: 20px;
 }
 
@@ -47,6 +47,6 @@
     background-color: rgba(0,0,0,.05);
 }
 
-.validated-input-text-transparent {
+.validated-input-text-transparent{
     color: rgba(0,0,0,.4);
 }

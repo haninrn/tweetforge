@@ -1,10 +1,10 @@
-import React from "react";
-import { ModalButton } from "../../../landing/components/ModalButton/ModalButton";
+import React from 'react';
+import { ModalButton } from '../../../../components/ModalButton/ModalButton';
 
-import './ForgotButtonFour.css';
+import './ForgotButtonFour.css'
 
 interface ForgotButtonFourProps {
-    submitNewPassword:() => void;
+    submitNewPassword:()=>void;
     active: boolean;
 }
 
@@ -15,7 +15,7 @@ export const ForgotButtonFour:React.FC<ForgotButtonFourProps> = ({submitNewPassw
                 active={active}
                 height={50}
                 fontColor={"white"}
-                backgroundColor={active ? "black" : "rgba(0,0,0,.7"}
+                backgroundColor={active ? "black" : "rgba(0,0,0,0.7)"}
                 fontSize={17}
                 fontWeight={700}
                 hoverBackground={{
@@ -25,8 +25,8 @@ export const ForgotButtonFour:React.FC<ForgotButtonFourProps> = ({submitNewPassw
                     a:.9
                 }}
                 onClick={submitNewPassword}>
-                    Change Password
-                </ModalButton>
+                Change Password
+            </ModalButton>
         </div>
     )
 }

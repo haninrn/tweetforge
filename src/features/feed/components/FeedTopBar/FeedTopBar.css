@@ -34,7 +34,7 @@
 }
 
 .feed-top-bar-choice {
-    width: 50px;
+    width: 50%;
     height: 50px;
     display: flex;
     flex-direction: column;
@@ -42,13 +42,13 @@
     align-items: center;
 }
 
-.feed-top-bar-choice:hover {
+.feed-top-bar-choice:hover{
     background-color: rgba(170, 184, 194, .25);
     cursor: pointer;
 }
 
-.feed-top-bar-choice-text-active {
-    margin:0;
+.feed-top-bar-choice-text-active{
+    margin: 0;
     padding: 0;
     font-size: 15px;
     font-weight: 700;

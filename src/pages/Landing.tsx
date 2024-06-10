@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/Store';
-import RegisterModal from '../features/register';
 import { resetUsername } from '../redux/Slices/UserSlice';
+import RegisterModal from '../features/register';
 import { RightSideBar, LandingFooter } from '../features/landing';
 import ForgotPasswordModal from '../features/forgotpassword';
 import { useNavigate } from 'react-router-dom';
@@ -12,6 +12,7 @@ import whiteLogo from '../assets/fwitter-logo-large-white.png';
 import './Landing.css';
 import '../assets/global.css';
 import LoginModal from '../features/login';
+
 
 export const Landing:React.FC = () => {
 
@@ -23,7 +24,7 @@ export const Landing:React.FC = () => {
 
   const [jwt, setJwt, removeJwt] = useLocalStorage("token", "");
   const navigate = useNavigate();
-  
+
   const toggleRegister = () => {
     setRegister(!register);
   }
@@ -45,20 +46,19 @@ export const Landing:React.FC = () => {
   return (
     <div className="home-container bg-color">
       {register ? <RegisterModal toggleModal={toggleRegister}/> : <></>}
-      {login ? <LoginModal toggleModal={toggleLogin} toggleRegister={toggleRegister} toggleForgot={toggleForgotPassword}/> : <></>}
-      {forgotPassword ? <ForgotPasswordModal toggleModal ={toggleForgotPassword}/> : <></>}
+      {login ? <LoginModal toggleModal={toggleLogin} toggleRegister={toggleRegister} toggleForgot={toggleForgotPassword}/> : <></> }
+      {forgotPassword ? <ForgotPasswordModal toggleModal={toggleForgotPassword}/> : <></>} 
       <div className="landing-layout">
         <div className="landing-top-left bg-blue">
-        <img src={whiteLogo} className="landing-top-left-logo" />
+          <img src={whiteLogo} className="landing-top-left-logo"/>
         </div>
         <div className="landing-top-right">
-        <RightSideBar toggleLogin={toggleLogin} toggleRegister={toggleRegister} />
+          <RightSideBar toggleLogin={toggleLogin} toggleRegister={toggleRegister} />
         </div>
-      <div className="landing-bottom">
-        <LandingFooter />
+        <div className="landing-bottom">
+          <LandingFooter />
         </div>
       </div>
     </div>
   )
 }
-

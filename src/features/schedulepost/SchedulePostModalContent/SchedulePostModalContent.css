@@ -1,0 +1,144 @@
+.schedule-post-modal-content{
+    width: 100%;
+    height: fit-content;
+}
+
+.schedule-post-modal-content-top{
+    padding: 12px;
+    width: 100%;
+    height: fit-content;
+    border-bottom: 1px solid #657786;
+    padding-bottom: 24px;
+}
+
+.schedule-post-modal-content-scheduled-info{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.schedule-post-modal-content-scheduled-date{
+    font-size: 13px;
+    color: #657786;
+    font-weight: 400;
+    margin-left: 12px;
+}
+
+.schedule-post-modal-content-label{
+    font-size: 15px;
+    color: #657786;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.schedule-post-modal-content-date-group{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 12px;
+}
+
+.scheduled-post-modal-month-select-wrapper{
+    width: 42%;
+}
+
+.scheduled-post-modal-day-select-wrapper{
+    width: 18%;
+}
+
+.scheduled-post-modal-year-select-wrapper{
+    width: 22%;
+}
+
+.scheduled-post-modal-calendar-select-wrapper{
+    width: 18%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.schedule-post-modal-content-time-group{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 12px;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.schedule-post-modal-hour-select-wrapper{
+    width: 33%;
+}
+
+.schedule-post-modal-minute-select-wrapper{
+    width: 33%;
+}
+
+.schedule-post-modal-ampm-select-wrapper{
+    width: 33%;
+}
+
+.schedule-post-modal-content-time-zone{
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.schedule-post-modal-content-bottom{
+    width: 100%;
+    height: fit-content;
+    padding: 12px;
+}
+
+.schedlue-post-modal-content-scheduled-posts-bg{
+    width: fit-content;
+    height: fit-content;
+    padding: 2px 8px;
+    border-radius: 12px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.schedlue-post-modal-content-scheduled-posts-bg:hover{
+    background-color: rgba(29, 161, 242, .2);
+    cursor: pointer;
+}
+
+.schedule-post-modal-content-scheduled-posts{
+    width: fit-content;
+    height: fit-content;
+    margin: 0;
+    color: #1DA1F2;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+#date-selector{
+    position: absolute;
+    left: 82%;
+    top: 65%;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+#date-selector::-webkit-calendar-picker-indicator{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}

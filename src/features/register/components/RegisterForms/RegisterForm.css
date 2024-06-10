@@ -5,35 +5,32 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-
 }
 
 .register-content{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    align-items:flex-start;
     width: 75%;
 }
 
-.register.header {
+.register-header {
     font-size: 31px;
     font-weight: 600;
     margin: 0;
     margin-bottom: 30px;
-
 }
 
-.register-h4{
+.register-h4 {
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 5px;
 }
 
-.register-text-sm {
+.register-text-sm{
     font-size: 14px;
     font-weight: 400;
-
 }
 
 .register-subheader {
@@ -49,11 +46,10 @@
 }
 
 .register-link {
-    cursor: point;
-
+    cursor: pointer;
 }
 
-.register-link:hover {
+.register-link:hover{
     text-decoration: underline;
 }
 
@@ -64,20 +60,19 @@
     margin-top: 5px;
 }
 
-.register-header-2 {
+.register-header-2{
     font-size: 31px;
     font-weight: 600;
     margin: 0;
     margin-bottom: 5px;
 }
 
-/*Component specific styles */
+/* Component specific styles */
 
 .register-one-dob-wrapper {
     width: 100%;
     height: fit-content;
     margin-bottom: 15px;
-
 }
 
 .register-two-checkbox-wrapper {
@@ -85,13 +80,11 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-
 }
 
 .register-three-value-wrapper {
     width: 100%;
     margin-bottom: 25px;
-
 }
 
 .register-three-bottom {
@@ -106,9 +99,9 @@
 }
 
 .register-four-input-wrapper-condensed {
+    width: 100%;
     margin-top: 25px;
     margin-bottom: 0px;
-
 }
 
 .register-four-checkbox-wrapper {
@@ -132,7 +125,7 @@
     margin-top: 0;
 }
 
-.register-five-message:hover {
+.register-five-message:hover{
     text-decoration: underline;
 }
 
@@ -146,6 +139,6 @@
 .register-six-icon {
     position: absolute;
     bottom: 2px;
-    right: 15px;
+    right:  15px;
     cursor: pointer;
 }

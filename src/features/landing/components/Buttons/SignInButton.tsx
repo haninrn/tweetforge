@@ -1,18 +1,16 @@
 import React from 'react';
 
-import './Button.css';
 import '../../../../assets/global.css';
+import './Buttons.css';
 
 interface SignInButtonProps {
-    handleClick: () => void;
+    handleClick: ()=> void;
 }
 
 export const SignInButton:React.FC<SignInButtonProps> = ({handleClick}) => {
-    return (
+    return(
         <div className="landing-button sign-in" onClick={handleClick}>
-            <p className="sign-up-text color-blue">Sign in</p>
+            <p className="sign-in-text color-blue">Sign in</p>
         </div>
-
-
     )
 }

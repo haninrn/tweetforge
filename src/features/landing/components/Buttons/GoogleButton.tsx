@@ -2,7 +2,7 @@ import React from 'react';
 
 import google from '../../../../assets/google.png';
 import '../../../../assets/global.css';
-import './Button.css';
+import './Buttons.css';
 
 export const GoogleButton:React.FC = () => {
     return (
@@ -10,7 +10,5 @@ export const GoogleButton:React.FC = () => {
             <img src={google} className="landing-button-logo"/>
             <p className="google-text">Sign up with Google</p>
         </div>
-
-
     )
 }
