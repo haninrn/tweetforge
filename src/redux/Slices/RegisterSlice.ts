@@ -1,7 +1,6 @@
-import {createAsyncThunk, createSlice, PayloadAction, Update} from '@reduxjs/toolkit';
-import { Dob } from '../../features/register/utils/GlobalInterfaces';
+import {createAsyncThunk, createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { Dob } from '../../utils/GlobalInterfaces';
 import axios from 'axios';
-import { Verify } from 'crypto';
 
 interface RegisterSliceState {
     loading: boolean;
@@ -9,23 +8,23 @@ interface RegisterSliceState {
     firstName: string;
     firstNameValid: boolean;
     lastName: string;
-    lastNameValid: boolean;
+    lastNameValid:boolean;
     email: string;
     emailValid: boolean;
     dob: Dob;
     dobValid: boolean;
     step: number;
-    username:string
+    username:string;
     phoneNumber:string;
     phoneNumberValid: boolean;
     code: string;
     password: string;
-    login: boolean;
+    login: boolean
 }
 
-interface updatePayload {
+interface UpdatePayload {
     name: string;
-    value:string | number | boolean;
+    value: string | number | boolean;
 }
 
 interface RegisterUser {
@@ -45,7 +44,7 @@ interface VerifyCode {
     code: string;
 }
 
-interface UpdatePassword{
+interface UpdatePassword {
     username: string;
     password: string;
 }
@@ -62,21 +61,20 @@ const initialState:RegisterSliceState = {
     dob: {
         month: 0,
         day: 0,
-        year: 0,
+        year: 0
     },
     dobValid: false,
     step: 1,
-    username: "",
-    phoneNumber:"",
+    username:"",
+    phoneNumber: "",
     phoneNumberValid: false,
     code: "",
     password: "",
-    login: false,
-    
+    login: false
 }
 
 export const registerUser = createAsyncThunk(
-    'register/register', 
+    'register/register',
     async (user:RegisterUser, thunkAPI) => {
         try{
             const req = await axios.post('http://localhost:8000/auth/register', user);
@@ -92,8 +90,8 @@ export const updateUserPhone = createAsyncThunk(
     async (body:UpdatePhone, thunkAPI) => {
         try{
             const req = await axios.put('http://localhost:8000/auth/update/phone', body);
-            const email = await axios.post('http://localhost:8000/auth/email/code', {username:body.username})
-        }catch (e){
+            const email = await axios.post('http://localhost:8000/auth/email/code', {username:body.username});
+        } catch (e){
             return thunkAPI.rejectWithValue(e);
         }
     }
@@ -103,9 +101,9 @@ export const resendEmail = createAsyncThunk(
     'register/resend',
     async (username:string, thunkAPI) => {
         try{
-            const req = await axios.post('https://localhost:8000/auth/email/code', {username});
+            const req = await axios.post('http://localhost:8000/auth/email/code', {username});
         }catch(e){
-            return thunkAPI.rejectWithValue(e); 
+            return thunkAPI.rejectWithValue(e);
         }
     }
 )
@@ -114,9 +112,9 @@ export const sendVerification = createAsyncThunk(
     'register/verify',
     async (body:VerifyCode, thunkAPI) => {
         try{
-            const req = await axios.post('http://localhost:8000/auth/email/verify', body)
+            const req = await axios.post('http://localhost:8000/auth/email/verify', body);
             return req.data;
-        } catch(e) {
+        } catch(e){
             return thunkAPI.rejectWithValue(e);
         }
     }
@@ -127,7 +125,6 @@ export const updateUserPassword = createAsyncThunk(
     async (body:UpdatePassword, thunkAPI) => {
         try{
             const req = await axios.put('http://localhost:8000/auth/update/password', body);
-
         } catch(e){
             return thunkAPI.rejectWithValue(e);
         }
@@ -138,11 +135,11 @@ export const RegisterSlice = createSlice({
     name:"register",
     initialState,
     reducers: {
-        updateRegister(state, action:PayloadAction<updatePayload>) {
+        updateRegister(state, action:PayloadAction<UpdatePayload>){
             let {name, value} = action.payload;
 
-            if(name === 'month' || name === 'day' || name === 'year') {
-                let dob= state.dob;
+            if(name === 'month' || name === 'day' || name === 'year'){
+                let dob = state.dob;
 
                 dob = {
                     ...dob,
@@ -159,19 +156,20 @@ export const RegisterSlice = createSlice({
                     [name]: value
                 }
             }
+
             console.log('Updating the global register state: ', state);
 
             return state;
         },
 
-        incrementStep(state) {
+        incrementStep(state){
             state.step++;
             state.error = false;
             return state;
         },
 
-        decrementStep(state) {
-            if(state.step === 1 || state.step === 4 || state.step >=6) {
+        decrementStep(state){
+            if(state.step === 1 || state.step === 4 || state.step >= 6){
                 return state;
             } else {
                 state.step--;
@@ -180,10 +178,9 @@ export const RegisterSlice = createSlice({
         },
 
         cleanRegisterState(state){
-            state= initialState;
+            state = initialState;
             return state;
         }
-        
     },
     extraReducers: (builder) => {
         builder.addCase(registerUser.pending, (state, action)=> {
@@ -191,8 +188,8 @@ export const RegisterSlice = createSlice({
             return state;
         });
 
-        builder.addCase(updateUserPhone.pending, (state,action) => {
-            state ={
+        builder.addCase(updateUserPhone.pending, (state, action) => {
+            state = {
                 ...state,
                 loading: true
             }
@@ -210,16 +207,16 @@ export const RegisterSlice = createSlice({
         builder.addCase(sendVerification.pending, (state, action) => {
             state = {
                 ...state,
-                loading:true
+                loading: true
             };
             return state;
         });
 
         builder.addCase(updateUserPassword.pending, (state, action) => {
-            state={
+            state = {
                 ...state,
                 loading: true
-            }
+            };
             return state;
         })
 
@@ -235,7 +232,7 @@ export const RegisterSlice = createSlice({
             return state;
         });
 
-        builder.addCase(updateUserPhone.fulfilled, (state,action) => {
+        builder.addCase(updateUserPhone.fulfilled, (state, action) => {
             let nextStep = state.step + 1;
             state = {
                 ...state,
@@ -247,13 +244,14 @@ export const RegisterSlice = createSlice({
         });
 
         builder.addCase(resendEmail.fulfilled, (state, action) => {
-            state = {
+            state= {
                 ...state,
                 loading: false,
-                error:false
+                error: false
             };
             return state;
-        });
+        }
+        );
 
         builder.addCase(sendVerification.fulfilled, (state, action) => {
             let nextStep = state.step + 1;
@@ -264,26 +262,26 @@ export const RegisterSlice = createSlice({
                 step: nextStep
             };
             return state;
-        })
+        });
 
         builder.addCase(updateUserPassword.fulfilled, (state, action) => {
-            state ={
+            state = {
                 ...state,
                 loading: false,
                 error: false,
                 login: true
             };
-    
-            return state;
-        })
 
-        builder.addCase(registerUser.rejected, (state,action) => {
+            return state;
+        });
+
+        builder.addCase(registerUser.rejected, (state, action)=> {
             state.error = true;
             state.loading = false;
             return state;
         });
 
-        builder.addCase(updateUserPhone.rejected, (state,action) => {
+        builder.addCase(updateUserPhone.rejected, (state, action) => {
             state = {
                 ...state,
                 loading: false,
@@ -317,9 +315,9 @@ export const RegisterSlice = createSlice({
                 loading: false,
                 error: true
             };
+
             return state;
         });
-
     }
 });
 

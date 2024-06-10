@@ -1,22 +1,30 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface ModalSliceState {
     displayEditPostImage: boolean;
     displayTagPeople: boolean;
     displayGif: boolean;
+    displaySchedule: boolean;
+    displayEmojis: boolean;
+    displayCreateReply: boolean;
+    displayPostMore: boolean;
 }
 
 const initialState:ModalSliceState = {
     displayEditPostImage: false,
     displayTagPeople: false,
-    displayGif: false 
+    displayGif: false,
+    displaySchedule: false,
+    displayEmojis: false,
+    displayCreateReply: false,
+    displayPostMore: false
 }
 
-export const ModalSlice = createSlice ({
-    name:"modal",
+export const ModalSlice = createSlice({
+    name: 'modal',
     initialState,
-    reducers:{
-        updateDisplayEditPostImage(state){
+    reducers: {
+        updateDisplayEditPostImages(state){
             state = {
                 ...state,
                 displayEditPostImage: !state.displayEditPostImage
@@ -39,10 +47,42 @@ export const ModalSlice = createSlice ({
             }
 
             return state;
+        },
+        updateDisplaySchedule(state){
+            state = {
+                ...state,
+                displaySchedule: !state.displaySchedule
+            };
+
+            return state;
+        },
+        updateDisplayEmojis(state){
+            state = {
+                ...state,
+                displayEmojis: !state.displayEmojis
+            }
+
+            return state;
+        },
+        updateDisplayCreateReply(state){
+            state = {
+                ...state,
+                displayCreateReply: !state.displayCreateReply
+            }
+
+            return state;
+        },
+        updateDisplayPostMore(state){
+            state = {
+                ...state,
+                displayPostMore: !state.displayPostMore
+            }
+
+            return state;
         }
     }
-});
+})
 
-export const {updateDisplayEditPostImage, updateDisplayTagPeople, updateDisplayGif} = ModalSlice.actions;
+export const {updateDisplayEditPostImages, updateDisplayTagPeople, updateDisplayGif, updateDisplaySchedule, updateDisplayEmojis, updateDisplayCreateReply, updateDisplayPostMore} = ModalSlice.actions;
 
 export default ModalSlice.reducer;

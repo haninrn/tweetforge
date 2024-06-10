@@ -1,9 +1,8 @@
 import React from 'react';
-
-import './Button.css';
+import './Buttons.css';
 
 interface SignUpButtonProps {
-    handleClick: () => void;
+    handleClick: ()=> void;
 }
 
 export const SignUpButton:React.FC<SignUpButtonProps> = ({handleClick}) => {
@@ -11,7 +10,5 @@ export const SignUpButton:React.FC<SignUpButtonProps> = ({handleClick}) => {
         <div className="landing-button sign-up" onClick={handleClick}>
             <p className="sign-up-text">Sign up with email</p>
         </div>
-
-
     )
 }

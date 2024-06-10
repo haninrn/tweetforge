@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import { UseDispatch, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../../redux/Store';
 import { updateRegister } from '../../../../redux/Slices/RegisterSlice';
+import {validateEmail} from '../../../../services/Validators';
 import { ValidatedTextInput } from '../../../../components/ValidatedInput/ValidatedTextInput';
-import { validateEmail } from '../../../../services/Validators';
-import './RegisterEmailInput.css'
+import './RegisterEmailInput.css';
 
-interface RegisterEmailInputProps {
+interface RegisterEmailInputProps{
     email:string;
 }
 
@@ -15,7 +15,7 @@ export const RegisterEmailInput:React.FC<RegisterEmailInputProps> = ({email}) =>
 
     const dispatch:AppDispatch = useDispatch();
 
-    const updateEmail = (e:React.ChangeEvent<HTMLInputElement>):void => {
+    const updateEmail = (e:React.ChangeEvent<HTMLInputElement>):void=>{
         dispatch(updateRegister({
             name:"email",
             value:e.target.value
@@ -28,12 +28,14 @@ export const RegisterEmailInput:React.FC<RegisterEmailInputProps> = ({email}) =>
             name:"emailValid",
             value:valid
         }));
+
     }
 
-  return (
-    <div className="register-email-input">
-        <ValidatedTextInput data={email} valid={validEmail} label={"Email"} name={"email"} changeValue={updateEmail} />
-        {validEmail ? <></> : <span className="register-email-error">Please enter a valid email.</span>}
-    </div>
-  )
+    return(
+        <div className="register-email-input">
+            <ValidatedTextInput data={email} valid={validEmail} label={"Email"} name={"email"} changeValue={updateEmail} />
+            {validEmail ? <></> : <span className="register-email-error">Please enter a valid email.</span>}
+        </div>
+    )
+
 }

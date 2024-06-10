@@ -1,4 +1,4 @@
-import Reac, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 
 interface TextInputProps{
     name: string
@@ -7,8 +7,6 @@ interface TextInputProps{
     onChange(e:React.ChangeEvent<HTMLInputElement>):void
     maxLength?:number
     validator?(value:string):boolean
-
-
 }
 
 export const TextInput:React.FC<TextInputProps> = ({name, label, errorMessage, onChange, maxLength, validator}) => {
@@ -19,13 +17,14 @@ export const TextInput:React.FC<TextInputProps> = ({name, label, errorMessage, o
         onChange(e);
         setInputValue(e.target.value);
     }
- 
+
   return (
-    <div className = "text-input">
-        <div>   
-            <span>{label}</span>
-            <input name={name} onChange={updateInput} />
-        </div>
+    <div className="text-input">
+      <div>
+        <span>{label}</span>
+        <input name={name} onChange={updateInput} />
+      </div>
     </div>
   )
 }
+

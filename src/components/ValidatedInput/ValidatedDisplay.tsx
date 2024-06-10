@@ -1,19 +1,19 @@
-import React, {useState} from 'react'
-import { UseDispatch, useDispatch } from 'react-redux'
-import { AppDispatch } from '../../redux/Store'
-import { updateRegister } from '../../redux/Slices/RegisterSlice'
-import { StyledInputBox, StyledInputLabel } from './StyledInput'
+import React, {useState} from 'react';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../redux/Store';
+import { updateRegister } from '../../redux/Slices/RegisterSlice';
+import { StyledInputBox, StyledInputLabel } from './StyledInput';
 
 import './ValidatedInput.css';
 
 interface ValidatedDisplayProps {
     label:string;
-    value: string;
-    valid?: boolean;
+    value:string;
+    valid?:boolean;
 }
 
-export const ValidatedDisplay:React.FC<ValidatedDisplayProps> =({label,value, valid}) => {
-    
+export const ValidatedDisplay:React.FC<ValidatedDisplayProps> = ({label, value, valid}) => {
+
     const [focused, setFocused] = useState<boolean>(false);
 
     const dispatch:AppDispatch = useDispatch();
@@ -22,18 +22,19 @@ export const ValidatedDisplay:React.FC<ValidatedDisplayProps> =({label,value, va
         setFocused(!focused);
 
         dispatch(updateRegister({
-            name:'step',
-            value:1
+            name: "step",
+            value: 1
         }));
     }
 
-    return(
-        <div className='validated-input'>
-            <StyledInputBox active = {false} valid = {valid ? (!valid ? true : false) : true}>
-                <StyledInputLabel color={focused ? 'blue':'gray'} active={!focused} valid={true}>
-                    {label}
+    return (
+        <div className="validated-input">
+            <StyledInputBox active={false} valid={valid ? (!valid ? true : false) : true}>
+                <StyledInputLabel color={focused ? 'blue' : 'gray'} active={!focused}
+                    valid={true}>
+                        {label}
                 </StyledInputLabel>
-                <input className='validated-input-value' onFocus={focus} value={value}/>
+                <input className="validated-input-value" onFocus={focus} value={value}/>
             </StyledInputBox>
         </div>
     )

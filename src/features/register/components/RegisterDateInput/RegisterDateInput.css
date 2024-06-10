@@ -17,11 +17,11 @@
     width: 22%;
 }
 
-.register-date-year {
-    width: 29%;  
+.register-date-year{
+    width: 29%;
 }
 
-.register-date-error {
+.register-date-error{
     color: red;
     font-size: 13px;
     font-weight: 300;

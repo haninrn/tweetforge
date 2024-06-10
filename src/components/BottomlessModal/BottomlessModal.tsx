@@ -10,13 +10,13 @@ interface ModalProps {
 
 export const BottomlessModal:React.FC<ModalProps> = ({topBar, content}) => {
     return(
-        <div className='bottomless-modal-bg'>
-            <div className='bottomless-modal-box bg-color'>
-                <div className='bottomless-modal-scrollbox'>
-                    <div className='bottomless-modal-top'>
+        <div className="bottomless-modal-bg">
+            <div className="bottomless-modal-box bg-color">
+                <div className="bottomless-modal-scrollbox">
+                    <div className="bottomless-modal-top">
                         {topBar}
                     </div>
-                    <div className='bottomless-modal-content'>
+                    <div className="bottomless-modal-content">
                         {content}
                     </div>
                 </div>

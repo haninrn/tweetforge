@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react';
+import { determineValidatedTextLabel } from '../../utils/DetermineStylesUtil';
 import { StyledInputBox, StyledInputLabel } from './StyledInput';
-import { determineValidatedTextLabel } from '../../features/register/utils/DetermineStylesUtil';
 
-import './ValidatedInput.css'
+import './ValidatedInput.css';
 
 interface ValidatedTextInputProps {
     valid:boolean;
@@ -22,44 +22,45 @@ export const ValidatedTextInput:React.FC<ValidatedTextInputProps> = ({valid, nam
 
     const focus = ():void => {
         setBorderActive(!borderActive);
-        if(!value) {
+        if(!value){
             setLabelActive(!labelActive);
         }
     }
 
     const update = (e:React.ChangeEvent<HTMLInputElement>):void => {
         setValue(e.target.value);
-        console.log("Send the info back to the dispatcher");
+        console.log("send the info back to the dispatcher");
         changeValue(e);
     }
 
-    useEffect(() => {
+    useEffect(()=> {
 
-        if(value && !labelActive) {
+        if(value && !labelActive){
             setLabelActive(true);
         }
+
         setColor(determineValidatedTextLabel(borderActive, valid));
 
-    },[valid ,value, borderActive, labelActive, color])
+    },[valid, value, borderActive, labelActive, color])
 
-  return (
-    <div className="validated-input">
-       <StyledInputBox active={borderActive} valid={valid}>
-         <StyledInputLabel color={color} active={labelActive}
-             valid={valid}>{label}</StyledInputLabel>
-              <input className="validated-input-value"
-                name={name}
-                onFocus={focus}
-                onBlur={focus}
-                onChange={update}
-                value={data}
-                {...attributes}
-             />
-             {attributes && attributes.maxLength && (borderActive || !valid) ?
-                  <span className="validated-input-remainder">{value.length}/ {attributes.maxLength}</span>  
-                  : <></>
-            }
-        </StyledInputBox>
+    return (
+        <div className="validated-input">
+            <StyledInputBox active={borderActive} valid={valid}>
+                <StyledInputLabel color={color} active={labelActive}
+                    valid={valid}>{label}</StyledInputLabel>
+                <input className="validated-input-value"
+                    name={name}
+                    onFocus={focus}
+                    onBlur={focus}
+                    onChange={update}
+                    value={data}
+                    {...attributes}
+                />
+                {attributes && attributes.maxLength && (borderActive || !valid) ?
+                    <span className="validated-input-remainder">{value.length} / {attributes.maxLength}</span>
+                    : <></>
+                }
+            </StyledInputBox>
         </div>
-  )
+    )
 }

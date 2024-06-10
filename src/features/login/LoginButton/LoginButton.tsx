@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import { AppDispatch } from "../../../redux/Store";
-import { UseDispatch, useDispatch } from "react-redux";
-import { loginUser } from "../../../redux/Slices/UserSlice";
-import { ModalButton } from "../../landing/components/ModalButton/ModalButton";
+import { AppDispatch } from '../../../redux/Store';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../../../redux/Slices/UserSlice';
+import { ModalButton } from '../../../components/ModalButton/ModalButton';
 
 import '../../../assets/global.css';
-import './LoginButton.css'
+import './LoginButton.css';
 
 interface LoginButtonProps {
     username: string;
@@ -14,7 +14,7 @@ interface LoginButtonProps {
 }
 
 export const LoginButton:React.FC<LoginButtonProps> = ({username, password}) => {
-    
+
     const dispatch:AppDispatch = useDispatch();
 
     const handleLogin = () => {
@@ -43,7 +43,7 @@ export const LoginButton:React.FC<LoginButtonProps> = ({username, password}) => 
                 }}>
                     Log in
                 </ModalButton>
-                <div className="login-button-text color-gray">Don't have account? <span className="link color-blue">Sign Up</span></div>
+                <div className="login-button-text color-gray">Don't have an account? <span className="link color-blue">Sign Up</span></div>
         </div>
     )
 }

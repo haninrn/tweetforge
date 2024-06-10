@@ -1,5 +1,5 @@
-import React from "react";
-import { StyledInputBox, StyledInputLabel } from "./StyledInput";
+import React from 'react';
+import { StyledInputBox, StyledInputLabel } from './StyledInput';
 import './ValidatedInput.css';
 
 interface DisabledValidatedInputProps {
@@ -14,15 +14,15 @@ export const DisabledValidatedInput:React.FC<DisabledValidatedInputProps> = ({la
                 active={false}
                 valid={true}
             >
-                <StyledInputLabel 
+                <StyledInputLabel
                     color={'gray'}
                     active={true}
                     valid={true}
-            >
-                {label}
-            </StyledInputLabel>
-            <input className="validated-input-value validated-input-text-transparent" value={value} disabled />
+                >
+                    {label}
+                </StyledInputLabel>
+                <input className="validated-input-value validated-input-text-transparent" value={value} disabled />
             </StyledInputBox>
         </div>
     )
-}
+} 

@@ -11,19 +11,14 @@ export const FeedTopBar:React.FC = () => {
         if(e.currentTarget.id === "for-you"){
             setFollowingActive(false);
             setForYouActive(true);
-
         } else {
             setForYouActive(false);
             setFollowingActive(true);
         }
-        }
-    
+    }
 
-    return (
+    return(
         <div className="feed-top-bar">
-            <div className="feed-top-bar-top">
-                <h1 className="feed-top-bar-home">Home</h1>
-            </div>
             <div className="feed-top-bar-bottom">
                 <div className="feed-top-bar-choice" id="for-you" onClick={selectChoice}>
                     <div className="feed-top-bar-choice-content">
@@ -31,21 +26,22 @@ export const FeedTopBar:React.FC = () => {
                             For you
                         </h2>
                         {
-                            forYouActive ?
-                            <div className="feed-top-bar-choice-underline"></div>
-                            : <></>
+                            forYouActive ? 
+                                <div className="feed-top-bar-choice-underline"></div>
+                                : <></>
                         }
                     </div>
                 </div>
                 <div className="feed-top-bar-choice" id="following" onClick={selectChoice}>
                     <div className="feed-top-bar-choice-content">
-                        <h2 className={`${forYouActive ? "feed-top-bar-choice-text-active" : "feed-top-bar-choice-text"}`}>
-                            </h2>
-                            {
-                                followingActive ?
-                                <div className="feed-top-bar-choice-underline"></div>
-                                :<></>
-                            }
+                        <h2 className={`${followingActive ? "feed-top-bar-choice-text-active" : "feed-top-bar-choice-text"}`}>
+                            Following
+                        </h2>
+                        {
+                            followingActive ? 
+                            <div className="feed-top-bar-choice-underline"></div>
+                            : <></>
+                        }
                     </div>
                 </div>
             </div>

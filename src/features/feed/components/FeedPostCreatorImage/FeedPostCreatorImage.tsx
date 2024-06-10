@@ -1,50 +1,58 @@
 import React from 'react';
+import CloseIcon from '@mui/icons-material/Close';
 
 import './FeedPostCreatorImage.css';
-import { Close } from '@mui/icons-material';
-import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../../redux/Store';
-import { updateCurrentPostImages } from '../../../../redux/Slices/PostSlice';
-import { updateDisplayEditPostImage } from '../../../../redux/Slices/ModalSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateCurrentPost, updateCurrentPostImages } from '../../../../redux/Slices/PostSlice';
+import { updateDisplayEditPostImages } from '../../../../redux/Slices/ModalSlice';
 
 interface FeedPostCreatorImageProps {
     image: string;
     name: string;
+    type: string;
+    displayCloseIcon: boolean;
 }
 
-export const FeedPostCreatorImage:React.FC<FeedPostCreatorImageProps> = ({image, name}) => {
+export const FeedPostCreatorImage:React.FC<FeedPostCreatorImageProps> = ({image, name, type, displayCloseIcon}) => {
 
     const state = useSelector((state:RootState) => state.post);
+
     const dispatch:AppDispatch = useDispatch();
 
-    // function to clear/remove image (x button) that has uploaded in post when posting in feed
     const removeImage = (e:React.MouseEvent<HTMLDivElement>) => {
-
         e.stopPropagation();
+        if((state.currentPost && state.currentPost.images.length > 0) || (state.currentReply && state.currentReply?.images.length > 0)){
+            dispatch(updateCurrentPost({
+                name: "images",
+                value: []
+            }));
+        } else {
+            let filteredImages:File[] = state.currentPostImages.filter((img:any) => img.name !== name);
 
-        let imageArrayCopy:File[] = state.currentPostImages;
-
-        imageArrayCopy = imageArrayCopy.filter((img) => img.name !== name);
-
-        dispatch(updateCurrentPostImages(imageArrayCopy));
+            dispatch(updateCurrentPostImages(filteredImages));
+        }
     }
 
-    const editImage = () => {
-        dispatch(updateDisplayEditPostImage());
+    const editImage = (e:React.MouseEvent<HTMLDivElement>) => {
+        e.stopPropagation();
+        dispatch(updateDisplayEditPostImages());
     }
-
 
     return(
-        <div className='feed-post-creator-image' style={{backgroundImage: `url(${image})`}} onClick={editImage}>
-            <div className='feed-post-creator-image-clear' onClick={removeImage} >
-                <Close sx={{
-                    fontSize:"18px",
-                    color:"white"
+        <div className="feed-post-creator-image" style={{backgroundImage:`url(${image})`}} onClick={editImage}>
+            {displayCloseIcon && <div className="feed-post-creator-image-clear" onClick={removeImage}>
+                <CloseIcon sx={{
+                    fontSize: "18px",
+                    color: "white"
                 }} />
-            </div>
-            <div className='feed-post-creator-image-edit' onClick={editImage}>
-                Edit
-            </div>
+            </div>}
+            {
+                type === 'image/gif' || 'gif' ? <></> :
+                <div className="feed-post-creator-image-edit" onClick={editImage}>
+                    Edit
+                </div>
+            }
         </div>
     )
 }

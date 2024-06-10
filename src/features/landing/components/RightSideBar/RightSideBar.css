@@ -1,4 +1,4 @@
-.right-side-bar {
+.right-side-bar{
     width: 100%;
     height: 100%;
     display: flex;
@@ -13,18 +13,17 @@
     width: 40px;
 }
 
-.right-side-bar-h1 {
+.right-side-bar-h1{
     font-size: 64px;
     font-weight: 700;
     font-family: 'Ubuntu', 'sans-serif';
+}
 
-} 
-
-.right-side-bar-h2 {
+.right-side-bar-h2{
     font-size: 36px;
     font-weight: 700;
     font-family: 'Ubuntu', 'sans-serif';
-    margin: 0;
+    margin:0;
     margin-bottom: 32px;
 }
 
@@ -32,8 +31,7 @@
     width: 300px;
     display: flex;
     flex-direction: column;
-
-}  
+}
 
 .right-side-bar-divider {
     width: 100%;
@@ -42,7 +40,7 @@
     align-items: center;
 }
 
-.right-side-bar-line {
+.right-side-bar-line{
     margin-top: 5px;
     width: 100%;
     height: 1px;
@@ -62,7 +60,7 @@
     margin-bottom: 20px;
 }
 
-.right-side-bar-login-wrapper{
+.right-side-bar-login-wrapper {
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -74,4 +72,3 @@
     font-size: 17px;
     font-weight: 600;
 }
-

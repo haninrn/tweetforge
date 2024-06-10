@@ -4,16 +4,17 @@ import blueLogo from '../../../assets/fwitter-logo-large-blue.png';
 import './LoginModalTop.css';
 
 interface LoginModalTopProps {
-    closeModal: ()=>void;
+    closeModal: () => void;
 }
 
-export const LoginModalTop:React.FC<LoginModalTopProps>=({closeModal}) => {
-    return (
-        < div className="login-modal-top">
+export const LoginModalTop:React.FC<LoginModalTopProps> = ({closeModal}) => {
+
+    return(
+        <div className="login-modal-top">
             <div className="login-modal-top-left">
-            <div className="login-modal-top-shadow" onClick={closeModal}>
-                X
-            </div>
+                <div className="login-modal-top-shadow" onClick={closeModal}>
+                    x
+                </div>
             </div>
             <div className="login-modal-top-middle">
                 <img className="login-modal-top-logo" src={blueLogo} />
@@ -21,4 +22,5 @@ export const LoginModalTop:React.FC<LoginModalTopProps>=({closeModal}) => {
             <div className="login-modal-top-right"></div>
         </div>
     )
+
 }

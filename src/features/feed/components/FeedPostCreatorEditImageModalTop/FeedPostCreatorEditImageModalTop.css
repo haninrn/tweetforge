@@ -21,8 +21,8 @@
     width: 30px;
     border-radius: 100%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
 .feed-post-creator-edit-image-modal-top-back:hover{
@@ -49,6 +49,6 @@
 }
 
 .feed-post-creator-edit-image-modal-save:hover{
-    background-color: rgba(0,0,0,.85);
+    background-color: rgba(0,0,0,.8);
     cursor: pointer;
 }

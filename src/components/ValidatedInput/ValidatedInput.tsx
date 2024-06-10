@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from 'react'
 
-import { ValidatedInputState } from '../../features/register/utils/GlobalInterfaces';
+import { ValidatedInputState } from '../../utils/GlobalInterfaces';
+import { determineValidatedStyles } from '../../utils/DetermineStylesUtil';
+import { StyledInputBox, StyledInputLabel } from './StyledInput';
 
-import { StyledInputBox, StyledInputLabel } from './StyledInput'
-
-import { determineValidatedStyles } from '../../features/register/utils/DetermineStylesUtil';
-
-import './ValidatedInput.css'
+import './ValidatedInput.css';
 
 interface ValidatedUserInputProps {
     name: string;
@@ -21,7 +19,7 @@ export const ValidatedInput:React.FC<ValidatedUserInputProps> = ({
     name, label, errorMessage, validator, changeValue, attributes
 }) => {
 
-    const [validatedState, setValidatedState] = useState<ValidatedInputState>({
+    const[validatedState, setValidatedState] = useState<ValidatedInputState>({
         active: false,
         valid: true,
         typedIn: false,
@@ -35,7 +33,7 @@ export const ValidatedInput:React.FC<ValidatedUserInputProps> = ({
     },[validatedState.active, validatedState.typedIn, validatedState.value, validatedState.labelActive, validatedState.labelColor]);
 
     const focus = (e:React.FocusEvent<HTMLInputElement>):void => {
-        setValidatedState ({
+        setValidatedState({
             ...validatedState,
             active: !validatedState?.active
         });
@@ -51,13 +49,11 @@ export const ValidatedInput:React.FC<ValidatedUserInputProps> = ({
         changeValue(e);
     }
 
-
-     
   return (
     <div className="validated-input">
         <StyledInputBox active={validatedState.active} valid={validatedState.valid}>
-            <StyledInputLabel color={validatedState.labelColor} active={validatedState.labelActive} 
-            valid={validatedState.valid}>{label}</StyledInputLabel>
+            <StyledInputLabel color={validatedState.labelColor} active={validatedState.labelActive}
+                valid={validatedState.valid}>{label}</StyledInputLabel>
             <input className="validated-input-value"
                 onFocus={focus}
                 onBlur={focus}
