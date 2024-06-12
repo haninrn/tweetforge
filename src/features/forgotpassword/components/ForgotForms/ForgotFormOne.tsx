@@ -18,10 +18,10 @@ export const ForgotFormOne:React.FC<ForgotFormOneProps> = ({setCredential, error
     return(
         <div className="forgot-form-container">
             <h1 className="forgot-form-header">
-                Find your Fwitter Account
+                Find your TweetForge Account
             </h1>
             <p className="forgot-form-text color-gray">
-                Enter you email, phone number, or username assocaited with you account to change your password.
+                Enter you email, phone number, or username associated with you account to change your password.
             </p>
             <ValidatedTextInput
                 valid={!error}
