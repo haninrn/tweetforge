@@ -31,7 +31,7 @@ export const ForgotFormFour:React.FC<ForgotFormFourProps> = ({updatePassword, ma
                 Make sure your new password is 8 characters or more. Try including numbers, letters, and punctuation marks for a <span className='link color-blue'>strong password</span>.
             </p>
             <p className="forgot-form-text color-gray">
-                You'll be logged out of all active Fwitter sessions after your password is changed.
+                You'll be logged out of all active TweetForge sessions after your password is changed.
             </p>
             <div className="forgot-form-four-password-wrapper">
                 <ValidatedTextInput

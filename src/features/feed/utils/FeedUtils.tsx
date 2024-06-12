@@ -28,7 +28,7 @@ export function getReplyDropDownButton(state:PostSliceState, callback:()=>void):
             return(
                 <div className="feed-post-reply-restriction-drop-down-button-disabled">
                     <LockSVG height={14} width={14} color={"rgba(29, 161, 242, .5)"} />
-                    Only your Fwitter Circle can reply
+                    Only your TweetForge Circle can reply
                 </div>
             )
         case 'MENTION':

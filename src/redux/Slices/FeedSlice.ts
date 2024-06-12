@@ -61,7 +61,7 @@ export const fetchNextFeedPage = createAsyncThunk(
     'feed/nextPage',
     async (payload:FetchNextPagePayload, thunkAPI) => {
         try{
-            let req = await axios.post(`http://localhost:8000/feed/`, {
+            let req = await axios.post(`http://localhost:8000/feed`, {
                 userId: payload.userId,
                 page: payload.page,
                 sessionStart: payload.sessionStart
