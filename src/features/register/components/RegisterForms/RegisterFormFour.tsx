@@ -15,7 +15,7 @@ export const RegisterFormFour:React.FC = () => {
 
     const state = useSelector((state:RootState) => state.register);
 
-    const [phoneCode, setPhoneCode] = useState<string>("+1");
+    const [phoneCode, setPhoneCode] = useState<string>("+60");
     const [phoneNumber, setPhoneNumber] = useState<string>("");
     const [validNumber, setValidNumber] = useState<boolean>(true);
 
@@ -53,7 +53,7 @@ export const RegisterFormFour:React.FC = () => {
                         content={countryCodeDropDown}
                         change={changeCode}
                         label={"Country Code"}
-                        defaultValue={"United States +1"}
+                        defaultValue={"Malaysia +60"}
                     />
                     <ValidatedTextInput
                         valid={true}

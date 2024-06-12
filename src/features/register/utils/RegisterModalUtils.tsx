@@ -27,7 +27,7 @@ export const determineModalContent = (step: number): JSX.Element => {
 
 export const countryCodeDropDown = ():JSX.Element[] =>{
     let options = data.filter((country) => {
-        if(country.code !== "US"){
+        if(country.code !== "Malaysia"){
             return country;
         }
     }).map((country) => {
@@ -38,7 +38,7 @@ export const countryCodeDropDown = ():JSX.Element[] =>{
     });
 
     options.unshift(
-        <option value={"+1 United States"} key={"US"}>{"+1 United States"}</option>
+        <option value={"+60 Malaysia"} key={"Malaysia"}>{"+60 Malaysia"}</option>
     );
 
     return options;
