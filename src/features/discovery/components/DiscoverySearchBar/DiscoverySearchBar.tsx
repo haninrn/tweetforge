@@ -1,10 +1,13 @@
 import React, {useState, useRef, useContext} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../../redux/Store';
 
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 import './DiscoverySearchBar.css';
 import { DiscoveryContext } from '../../context/DiscoveryContext';
 import { DiscoveryContextType } from '../../context/Models';
+import { loadSearchedFeedPage } from '../../../../redux/Slices/FeedSlice';
 
 interface DiscoverySearchBarProps {
     toggleDropDown: (value:boolean) => void
@@ -17,6 +20,9 @@ export const DiscoverySearchBar:React.FC<DiscoverySearchBarProps> = ({toggleDrop
     const [active, setActive] = useState<boolean>(false);
     const [timer, setTimer] = useState<any>();
     const inputRef = useRef<HTMLInputElement>(null);
+    const dispatch:AppDispatch = useDispatch();
+    const sessionStart = useSelector((state:RootState) => state.feed.sessionStart);
+    const userState = useSelector((state:RootState) => state.user);
 
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         updateSearchContent(e.target.value);
@@ -28,9 +34,14 @@ export const DiscoverySearchBar:React.FC<DiscoverySearchBarProps> = ({toggleDrop
     }
 
     const focusOnInput = () => {
-        if(inputRef && inputRef.current) inputRef.current.focus();
-        toggleDropDown(true);
-        
+        if (userState != undefined && sessionStart != undefined && userState.loggedIn != undefined) {
+            dispatch(loadSearchedFeedPage({
+                token: userState.token,
+                userId: userState.loggedIn.userId,
+                sessionStart,
+                searchTerm: searchContent
+            }))
+        }
     }
 
     const handleFocus = () => {
