@@ -37,7 +37,7 @@ export const loadFeedPage = createAsyncThunk(
     'feed/feedPage',
     async (payload:LoadFeedPagePayload, thunkAPI) => {
         try{
-            let req = await axios.post(`http://localhost:8000/feed/`, {
+            let req = await axios.post(`http://localhost:8000/feed`, {
                 userId: payload.userId,
                 page: 0,
                 sessionStart: payload.sessionStart

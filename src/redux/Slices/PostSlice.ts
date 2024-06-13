@@ -91,7 +91,7 @@ export const createPost = createAsyncThunk(
                 replyRestriction: body.replyRestriction
             }
 
-            const req = await axios.post('http://localhost:8000/posts/', post, {
+            const req = await axios.post('http://localhost:8000/posts', post, {
                 headers: {
                     "Authorization": `Bearer ${body.token}`
                 }
