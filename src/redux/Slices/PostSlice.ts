@@ -60,9 +60,9 @@ interface CreateReplyWithMediaBody {
     originalPost: number;
     replyContent: string;
     images: File[];
-    scheduled: boolean;
-    scheduledDate: Date | undefined;
-    poll: Poll | undefined;
+    // scheduled: boolean;
+    // scheduledDate: Date | undefined;
+    // poll: Poll | undefined;
     token: string
 }
 
@@ -83,15 +83,15 @@ export const createPost = createAsyncThunk(
                 content: body.content,
                 author: body.author,
                 images: body.images,
-                poll: body.poll,
-                replies: [],
-                scheduled: body.scheduled,
-                scheduledDate: body.scheduledDate,
-                audience: body.audience,
-                replyRestriction: body.replyRestriction
+                // poll: body.poll,
+                replies: []
+                // scheduled: body.scheduled,
+                // scheduledDate: body.scheduledDate,
+                // audience: body.audience,
+                // replyRestriction: body.replyRestriction
             }
 
-            const req = await axios.post('http://localhost:8000/posts', post, {
+            const req = await axios.post('http://localhost:8000/posts/', post, {
                 headers: {
                     "Authorization": `Bearer ${body.token}`
                 }
@@ -121,10 +121,10 @@ export const createReply = createAsyncThunk(
             author: body.reply.author,
             originalPost: body.reply.originalPost.postId,
             replyContent: body.reply.replyContent,
-            images: body.reply.images,
-            scheduled: body.reply.scheduled,
-            scheduledDate: body.reply.scheduledDate,
-            poll: body.reply.poll
+            images: body.reply.images
+            // scheduled: body.reply.scheduled,
+            // scheduledDate: body.reply.scheduledDate,
+            // poll: body.reply.poll
         }
 
         try{
@@ -154,11 +154,11 @@ export const createPostWithMedia = createAsyncThunk(
             let post = {
                 content: body.content,
                 author: body.author,
-                replies: body.replies,
-                scheduled: body.scheduled,
-                scheduledDate: body.scheduledDate,
-                audience: body.audience,
-                replyRestriction: body.replyRestriction
+                replies: body.replies
+                // scheduled: body.scheduled,
+                // scheduledDate: body.scheduledDate,
+                // audience: body.audience,
+                // replyRestriction: body.replyRestriction
             }
 
             data.append('post', JSON.stringify(post));
@@ -198,10 +198,10 @@ export const createReplyWithMedia = createAsyncThunk(
             author: body.author,
             originalPost: body.originalPost,
             replyContent: body.replyContent,
-            images: [],
-            scheduled: body.scheduled,
-            scheduledDate: body.scheduledDate,
-            poll: body.poll
+            images: []
+            // scheduled: body.scheduled,
+            // scheduledDate: body.scheduledDate,
+            // poll: body.poll
         }
 
         data.append('reply', JSON.stringify(reply));
@@ -323,7 +323,7 @@ export const PostSlice = createSlice({
                     originalPost: action.payload.post,
                     replyContent: "",
                     images: [],
-                    scheduled: false
+                    // scheduled: false
                 }
             }
 
@@ -491,19 +491,19 @@ export const PostSlice = createSlice({
                     currentPost: post
                 }
 
-            } else if(state.currentReply && state.currentReply.poll){
+            } else if(state.currentReply){
                 let reply = JSON.parse(JSON.stringify(state.currentReply));
-                let poll = reply.poll;
+                // let poll = reply.poll;
 
-                poll =  {
-                    ...poll,
-                    endTime: action.payload
-                }
+                // poll =  {
+                //     ...poll,
+                //     endTime: action.payload
+                // }
 
-                reply = {
-                    ...reply,
-                    poll
-                }
+                // reply = {
+                //     ...reply,
+                //     poll
+                // }
 
                 state = {
                     ...state, 
