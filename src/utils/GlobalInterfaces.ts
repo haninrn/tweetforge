@@ -131,9 +131,9 @@ export interface Reply{
     originalPost: Post;
     replyContent: string;
     images: PostImage[];
-    scheduled: boolean;
-    scheduledDate?: Date;
-    poll?: Poll;
+    // scheduled: boolean;
+    // scheduledDate?: Date;
+    // poll?: Poll;
 }
 
 export interface TenorCategories {

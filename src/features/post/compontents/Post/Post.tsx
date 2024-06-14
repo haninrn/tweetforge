@@ -187,49 +187,10 @@ export const Post:React.FC<PostProps> = ({feedPost}) => {
         }))
     }
 
-    const createBookmark = () => {
-        let updatedPost = JSON.parse(JSON.stringify(post));
-
-        if(loggedIn && !post.bookmarks.some(user => user.userId === loggedIn.userId)){
-            let bookmarks = [...post.bookmarks, loggedIn];
-            updatedPost = {
-                ...updatedPost,
-                bookmarks
-            }
-            dispatch(updatePost(updatedPost));
-        }
-        if(loggedIn && post.bookmarks.some(user => user.userId === loggedIn.userId)) {
-            let bookmarks = updatedPost.bookmarks.filter((user:User) => user.userId !== loggedIn.userId)
-            updatedPost = {
-                ...updatedPost,
-                bookmarks
-            }
-            dispatch(updatePost(updatedPost));
-        }
-
-        dispatch(bookmarkPost({
-            postId: post.postId,
-            token
-        }))
-    }
-
     const createView = (entries:any) => {
         entries.forEach((entry:any) => {
             if(entry.isIntersecting){
                 let updatedPost = JSON.parse(JSON.stringify(post));
-
-                if(loggedIn && !post.views.some((user) => user.userId === loggedIn.userId)){
-                    let views = [...post.views, loggedIn];
-                    updatedPost = {
-                        ...updatedPost,
-                        views
-                    };
-                    dispatch(updatePost(updatedPost));
-                    dispatch(viewPost({
-                        postId: post.postId,
-                        token
-                    }))
-                }
             }
         })
     }
@@ -249,12 +210,6 @@ export const Post:React.FC<PostProps> = ({feedPost}) => {
 
     return (
             <div className="post" ref={postRef}>
-                {feedPost.repost && 
-                    <p className="post-repost-info" onMouseOver={() => {/* Popup a modal with the users information on mouse over */}}>
-                        <RepostOutlineSVG height={18} width={18} color={"#657786"} />
-                        <span className="post-repost-user" onClick={() => navigate(`/${feedPost.repostUser.username}`)}>{feedPost.repostUser.nickname} reposted</span>
-                    </p>
-                }
                 <div className="post-body-wrapper">
                     <div className="post-left">
                         <img className="post-pfp" src={post.author.profilePicture ? post.author.profilePicture.imageURL : pfp} alt={`${post.author.nickname}'s pfp`}/>
@@ -312,13 +267,13 @@ export const Post:React.FC<PostProps> = ({feedPost}) => {
                                 <div className="post-action-bar-blue-wrapper" id="views" onMouseOver={updateHoverColors} onMouseLeave={resetColors}>
                                     <ViewsSVG height={20} width={20} color={colors.views} />
                                 </div>
-                                {post.views.length > 0 && <p className="post-action-bar-count" style={{color: colors.views}}>{convertCount(post.views.length)}</p>}
+                                
                             </div>
                             <div className="post-action-bar-right">
                                 <div className="post-action-bar-group">
-                                    <div className="post-action-bar-blue-wrapper" id="bookmark" onMouseOver={updateHoverColors} onMouseLeave={resetColors} onClick={createBookmark}>
+                                    <div className="post-action-bar-blue-wrapper" id="bookmark" onMouseOver={updateHoverColors} onMouseLeave={resetColors} onClick={()=>{}}>
                                         <BookmarkOutlineSVG height={20} width={20} color={colors.bookmark} />
-                                        {post.bookmarks.length > 0 && <p className="post-action-bar-count" style={{color: colors.bookmark}}>{convertCount(post.bookmarks.length)}</p>}
+                                        {1> 0 && <p className="post-action-bar-count" style={{color: colors.bookmark}}></p>}
                                     </div>
                                 </div>
                                 <div className="post-action-bar-blue-wrapper" id="share" onMouseOver={updateHoverColors} onMouseLeave={resetColors}>

@@ -11,8 +11,8 @@ import { convertPostedDateToString } from '../../utils/PostUtils';
 import { CreatePostTextArea } from '../CreatePostTextArea/CreatePostTextArea';
 import { initializeCurrentReply } from '../../../../redux/Slices/PostSlice';
 import { FeedPostCreatorImages } from '../../../feed/components/FeedPostCreatorImages/FeedPostCreatorImages';
-import { FeedPostCreatorPoll } from '../../../feed/components/FeedPostCreatorPoll/FeedPostCreatorPoll';
-import { EmojiDropDown } from '../../../../components/EmojiDropDown/EmojiDropDown';
+// import { FeedPostCreatorPoll } from '../../../feed/components/FeedPostCreatorPoll/FeedPostCreatorPoll';
+// import { EmojiDropDown } from '../../../../components/EmojiDropDown/EmojiDropDown';
 
 export const CreateReplyBody:React.FC = () => {
 
@@ -80,7 +80,7 @@ export const CreateReplyBody:React.FC = () => {
                         </div>
                         
                         {(postState.currentReplyImages.length > 0 || (postState.currentReply.images.length > 0)) && <FeedPostCreatorImages />}
-                        {(postState.currentReply.poll) && <FeedPostCreatorPoll />}
+                        {/* {(postState.currentReply.poll) && <FeedPostCreatorPoll />} */}
                     </>
                     : <></>
                 }

@@ -17,9 +17,7 @@ export const determineModalContent = (step: number): JSX.Element => {
         case 4:
             return <RegisterFormFour />
         case 5:
-            return <RegisterFormFive/>
-        case 6:
-            return <RegisterFormSix />
+            return <RegisterFormSix/>
         default:
             return <></>
     }

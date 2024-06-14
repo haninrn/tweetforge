@@ -19,7 +19,7 @@ export const CreateReplyBottom:React.FC = () => {
     const generateButtonClass = ():string => {
         if(postState.currentReply){
             let content:string = postState.currentReply.replyContent;
-            return content !== '' || postState.currentReplyImages.length > 0 || (postState.currentReply.images.length >= 1) || (postState.currentReply.poll !== undefined) ? "submit-reply-button reply-button-active" : "submit-reply-button reply-button-inactive";
+            return content !== '' || postState.currentReplyImages.length > 0 || (postState.currentReply.images.length >= 1)  ? "submit-reply-button reply-button-active" : "submit-reply-button reply-button-inactive";
             //return (state.post.currentPost && state.post.currentPost.content) !== '' || state.post.currentPostImages.length > 0 || (state.post.currentPost && state.post.currentPost.images.length >= 1) || (state.post.currentPost && state.post.currentPost.poll !== undefined)? "feed-post-creator-post-button post-active" : "feed-post-creator-post-button";
         }
 
@@ -30,7 +30,7 @@ export const CreateReplyBottom:React.FC = () => {
     const activateButton = ():boolean => {
         if(postState.currentReply){
             let content:string = postState.currentReply.replyContent;
-            return !(content !== '' || postState.currentReplyImages.length > 0 || (postState.currentReply.images.length >= 1) || (postState.currentReply.poll !== undefined));
+            return !(content !== '' || postState.currentReplyImages.length > 0 || (postState.currentReply.images.length >= 1));
         } 
 
         return false; 
@@ -53,9 +53,9 @@ export const CreateReplyBottom:React.FC = () => {
                 originalPost: postState.currentReply.originalPost.postId,
                 replyContent: postState.currentReply.replyContent,
                 images: postState.currentReplyImages,
-                scheduled: postState.currentReply.scheduled,
-                scheduledDate: postState.currentReply.scheduledDate,
-                poll: postState.currentReply.poll,
+                // scheduled: postState.currentReply.scheduled,
+                // scheduledDate: postState.currentReply.scheduledDate,
+                // poll: postState.currentReply.poll,
                 token
             }))
             dispatch(updateDisplayCreateReply());

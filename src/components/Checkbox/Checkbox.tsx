@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { StyledCheckbox, StyledCheckboxBackground } from './StyledCheckbox';
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded';
-import './Checkbox.css'
+import './CheckBox.css'
 
 export const Checkbox:React.FC = () => {
     const [clicked, setClicked] = useState<boolean>(false);
