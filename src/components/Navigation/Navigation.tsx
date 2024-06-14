@@ -72,7 +72,7 @@ export const Navigation:React.FC<NavigationProps> = ({currentPage}) => {
                     </Link>
                 </div>
                 <div className="navigation-item">
-                    <Link to="" className="navigation-link">
+                    <Link to={`http://localhost:3000/${state.username}`} className="navigation-link">
                         <ProfileSVG height={26} width={26} />
                         <p className="navigation-text navigation-inactive">Profile</p>
                     </Link>
