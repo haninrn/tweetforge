@@ -27,20 +27,17 @@ export const DiscoverySearchBar:React.FC<DiscoverySearchBarProps> = ({toggleDrop
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         updateSearchContent(e.target.value);
         clearTimeout(timer);
-        let t = setTimeout(() => {
-                searchForUsers(e.target.value);
-            }, 500);
-        setTimer(t);
     }
 
     const focusOnInput = () => {
-        if (userState != undefined && sessionStart != undefined && userState.loggedIn != undefined) {
+        if (sessionStart != undefined) {
             dispatch(loadSearchedFeedPage({
                 token: userState.token,
-                userId: userState.loggedIn.userId,
+                userId: userState?.loggedIn?.userId ?? 0,
                 sessionStart,
                 searchTerm: searchContent
             }))
+            console.log("Entered")
         }
     }
 
