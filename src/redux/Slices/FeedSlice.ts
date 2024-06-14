@@ -45,7 +45,7 @@ export const loadFeedPage = createAsyncThunk(
   async (payload: LoadFeedPagePayload, thunkAPI) => {
     try {
       let req = await axios.post(
-        `http://localhost:8080/feed`,
+        `http://localhost:8000/feed`,
         {
           userId: payload.userId,
           page: 0,
@@ -73,12 +73,11 @@ export const loadSearchedFeedPage = createAsyncThunk(
   async (payload: LoadSearchedFeedPagePayload, thunkAPI) => {
     try {
       let req = await axios.post(
-        `http://localhost:8080/feed/searched`,
+        `http://localhost:8000/feed/searched?searchTerm=${payload.searchTerm}`,
         {
           userId: payload.userId,
           page: 0,
           sessionStart: payload.sessionStart,
-          searchTerm: payload.searchTerm,
         },
         {
           headers: {
@@ -101,7 +100,7 @@ export const fetchNextFeedPage = createAsyncThunk(
   async (payload: FetchNextPagePayload, thunkAPI) => {
     try {
       let req = await axios.post(
-        `http://localhost:8080/feed`,
+        `http://localhost:8000/feed`,
         {
           userId: payload.userId,
           page: payload.page,

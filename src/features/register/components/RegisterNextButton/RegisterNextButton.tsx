@@ -92,18 +92,8 @@ export const RegisterNextButton:React.FC<RegisterNextButtonProps> = ({step}) => 
                             onClick={sendPhoneNumber}
                         > Update Number
                         </StyledNextButton>
-            case 5:
-                let stepFiveActive = state.code ? true : false;
 
-                return  <StyledNextButton
-                            active={stepFiveActive}
-                            disabled={!stepFiveActive}
-                            color={"black"}
-                            onClick={verifyEmail}>
-                                Next
-                        </StyledNextButton>
-
-            case 6: 
+            case 5: 
                 return  <StyledNextButton
                             active={state.password.length >= 8}
                             disabled={!(state.password.length >= 8)}

@@ -210,12 +210,6 @@ export const Post:React.FC<PostProps> = ({feedPost}) => {
 
     return (
             <div className="post" ref={postRef}>
-                {feedPost.repost && 
-                    <p className="post-repost-info" onMouseOver={() => {/* Popup a modal with the users information on mouse over */}}>
-                        <RepostOutlineSVG height={18} width={18} color={"#657786"} />
-                        <span className="post-repost-user" onClick={() => navigate(`/${feedPost.repostUser.username}`)}>{feedPost.repostUser.nickname} reposted</span>
-                    </p>
-                }
                 <div className="post-body-wrapper">
                     <div className="post-left">
                         <img className="post-pfp" src={post.author.profilePicture ? post.author.profilePicture.imageURL : pfp} alt={`${post.author.nickname}'s pfp`}/>
@@ -267,7 +261,7 @@ export const Post:React.FC<PostProps> = ({feedPost}) => {
                                 <div className="post-action-bar-like-wrapper" id="like" onMouseOver={updateHoverColors} onMouseLeave={resetColors} onClick={createLike}>
                                     <LikeOutlineSVG height={20} width={20} color={colors.like} />
                                 </div>
-                                {1 > 0 && <p className="post-action-bar-count" style={{color: colors.like}}></p>}
+                                {post.likes.length > 0 && <p className="post-action-bar-count" style={{color: colors.like}}>{convertCount(post.likes.length)}</p>}
                             </div>
                             <div className="post-action-bar-group">
                                 <div className="post-action-bar-blue-wrapper" id="views" onMouseOver={updateHoverColors} onMouseLeave={resetColors}>
@@ -279,7 +273,7 @@ export const Post:React.FC<PostProps> = ({feedPost}) => {
                                 <div className="post-action-bar-group">
                                     <div className="post-action-bar-blue-wrapper" id="bookmark" onMouseOver={updateHoverColors} onMouseLeave={resetColors} onClick={()=>{}}>
                                         <BookmarkOutlineSVG height={20} width={20} color={colors.bookmark} />
-                                        {1> 0 && <p className="post-action-bar-count" style={{color: colors.bookmark}}>3</p>}
+                                        {1> 0 && <p className="post-action-bar-count" style={{color: colors.bookmark}}></p>}
                                     </div>
                                 </div>
                                 <div className="post-action-bar-blue-wrapper" id="share" onMouseOver={updateHoverColors} onMouseLeave={resetColors}>
